@@ -1,11 +1,11 @@
 import React from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { MenuBar } from "./MenuBar";
+import { MenuBar } from "./components/MenuBar";
 import Link from "@tiptap/extension-link";
-import MathExtension from "./MathExtension";
+import MathExtension from "./extensions/MathExtension";
 
-export default function App() {
+export default function Editor() {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -18,9 +18,12 @@ export default function App() {
   });
 
   return (
-    <>
+    <div className="border m-2">
       <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
-    </>
+      <EditorContent
+        editor={editor}
+        className="focus:outline-none py-2 px-1  "
+      />
+    </div>
   );
 }
