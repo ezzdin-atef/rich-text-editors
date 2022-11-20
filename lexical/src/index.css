@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.editor-paragraph {
+  @apply text-gray-700 focus:outline-none;
+}
+
+[role="textbox"] {
+  @apply text-gray-700 focus:outline-none px-1 py-2;
+}
