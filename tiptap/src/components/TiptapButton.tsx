@@ -4,7 +4,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isActive?: boolean;
 }
 
-export default function Button({ children, isActive, ...props }: ButtonProps) {
+export default function TiptapButton({
+  children,
+  isActive,
+  ...props
+}: ButtonProps) {
   return (
     <button
       className={`disabled:opacity-60 disabled:cursor-not-allowed hover:bg-slate-200 ${

@@ -1,21 +1,27 @@
 import React from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { MenuBar } from "./components/MenuBar";
+import { MenuBar } from "./MenuBar";
 import Link from "@tiptap/extension-link";
-import MathExtension from "./extensions/MathExtension";
 
 export default function Editor() {
   const editor = useEditor({
     extensions: [
       StarterKit,
-      MathExtension,
       Link.configure({
         openOnClick: false,
       }),
     ],
     content: "<p>Hello World!</p>",
   });
+
+  const getOutputHtml = () => {
+    console.log(editor?.getHTML());
+  };
+
+  const setContent = (html: string) => {
+    editor?.commands.setContent(html);
+  };
 
   return (
     <div className="border m-2">

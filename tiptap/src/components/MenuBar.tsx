@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/react";
 import React, { useCallback } from "react";
-import Button from "./Button";
+import TiptapButton from "./TiptapButton";
 import {
   FaBold,
   FaCode,
@@ -14,7 +14,7 @@ import {
   FaStrikethrough,
   FaUndo,
 } from "react-icons/fa";
-import Dropdown from "./Dropdown";
+import TiptapDropdown from "./TiptapDropdown";
 
 export const MenuBar = ({ editor }: { editor: Editor | null }) => {
   const setLink = useCallback(() => {
@@ -47,132 +47,134 @@ export const MenuBar = ({ editor }: { editor: Editor | null }) => {
 
   return (
     <div className="bg-slate-100 py-2 px-1 flex gap-2 text-sm flex-wrap">
-      <Button onClick={setLink} isActive={editor.isActive("link")}>
+      <TiptapButton onClick={setLink} isActive={editor.isActive("link")}>
         <FaLink />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         isActive={editor.isActive("bold")}
       >
         <FaBold />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         isActive={editor.isActive("italic")}
       >
         <FaItalic />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         isActive={editor.isActive("strike")}
       >
         <FaStrikethrough />
-      </Button>
-      {/* <Button
+      </TiptapButton>
+      {/* <TiptapButton
         onClick={() => editor.chain().focus().toggleCode().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
         isActive={editor.isActive("code")}
       >
         <FaCode />
-      </Button> */}
-      <Button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
+      </TiptapButton> */}
+      <TiptapButton
+        onClick={() => editor.chain().focus().unsetAllMarks().run()}
+      >
         <FaRemoveFormat />
-      </Button>
-      <Dropdown>
-        <Button
+      </TiptapButton>
+      <TiptapDropdown>
+        <TiptapButton
           onClick={() => editor.chain().focus().setParagraph().run()}
           isActive={editor.isActive("paragraph")}
         >
           paragraph
-        </Button>
-        <Button
+        </TiptapButton>
+        <TiptapButton
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 1 }).run()
           }
           isActive={editor.isActive("heading", { level: 1 })}
         >
           h1
-        </Button>
-        <Button
+        </TiptapButton>
+        <TiptapButton
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
           isActive={editor.isActive("heading", { level: 2 })}
         >
           h2
-        </Button>
-        <Button
+        </TiptapButton>
+        <TiptapButton
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 3 }).run()
           }
           isActive={editor.isActive("heading", { level: 3 })}
         >
           h3
-        </Button>
-        <Button
+        </TiptapButton>
+        <TiptapButton
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 4 }).run()
           }
           isActive={editor.isActive("heading", { level: 4 })}
         >
           h4
-        </Button>
-        <Button
+        </TiptapButton>
+        <TiptapButton
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 5 }).run()
           }
           isActive={editor.isActive("heading", { level: 5 })}
         >
           h5
-        </Button>
-        <Button
+        </TiptapButton>
+        <TiptapButton
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 6 }).run()
           }
           isActive={editor.isActive("heading", { level: 6 })}
         >
           h6
-        </Button>
-      </Dropdown>
-      <Button
+        </TiptapButton>
+      </TiptapDropdown>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         isActive={editor.isActive("bulletList")}
       >
         <FaListUl />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         isActive={editor.isActive("orderedList")}
       >
         <FaListOl />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         isActive={editor.isActive("codeBlock")}
       >
         <FaCode />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         isActive={editor.isActive("blockquote")}
       >
         <FaQuoteLeft />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
       >
         <FaUndo />
-      </Button>
-      <Button
+      </TiptapButton>
+      <TiptapButton
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
       >
         <FaRedo />
-      </Button>
+      </TiptapButton>
     </div>
   );
 };
