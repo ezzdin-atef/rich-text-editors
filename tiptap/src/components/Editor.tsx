@@ -15,10 +15,12 @@ export default function Editor() {
     content: "<p>Hello World!</p>",
   });
 
+  // method to get the editor content output to be stored in the database
   const getOutputHtml = () => {
     console.log(editor?.getHTML());
   };
 
+  // method to set the editor content from the database
   const setContent = (html: string) => {
     editor?.commands.setContent(html);
   };
@@ -26,10 +28,7 @@ export default function Editor() {
   return (
     <div className="border m-2">
       <MenuBar editor={editor} />
-      <EditorContent
-        editor={editor}
-        className="focus:outline-none py-2 px-1  "
-      />
+      <EditorContent editor={editor} className="focus:outline-none py-2 px-1" />
     </div>
   );
 }
